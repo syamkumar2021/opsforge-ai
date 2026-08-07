@@ -1,0 +1,47 @@
+# FastAPI & server
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+python-multipart==0.0.17
+
+# Async database
+sqlalchemy[asyncio]==2.0.36
+asyncpg==0.30.0
+psycopg[binary,pool]==3.2.3
+
+# Settings & validation
+pydantic==2.10.3
+pydantic-settings==2.6.1
+email-validator==2.2.0
+python-dotenv==1.0.1
+
+# Auth
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.2.1
+
+# LangGraph / LangChain
+langgraph==0.2.60
+langgraph-checkpoint-postgres==2.0.9
+langchain==0.3.13
+langchain-core==0.3.28
+langchain-openai==0.2.14
+langchain-community==0.3.13
+
+# Kafka
+aiokafka==0.12.0
+
+# Browser agent
+playwright==1.48.0
+
+# HTTP / resilience / email
+httpx==0.28.1
+tenacity==9.0.0
+orjson==3.10.12
+aiosmtplib==3.0.2
+
+# Testing
+pytest==8.3.4
+pytest-asyncio==0.24.0
+pytest-cov==6.0.0
+pytest-html==4.1.1
+pytest-xdist==3.6.1

@@ -1,0 +1,84 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+*.egg-info/
+dist/
+build/
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Testing & coverage
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# Playwright
+playwright-report/
+test-results/
+.playwright/
+
+# Docker
+Dockerfile
+docker-compose*.yml
+
+# Docs & misc
+README.md
+*.md
+.DS_Store
+Thumbs.db
+.checkpoints/
+*.log
+
+reports/
+htmlcov/
+.coverage
+.pytest_cache/
+__pycache__/
+.git/
+
+
+.git
+.github
+.venv
+venv
+__pycache__
+**/__pycache__
+*.pyc
+.pytest_cache
+.mypy_cache
+.coverage
+htmlcov
+reports
+*.md
+.env
+.env.*
+
+# critical: never send frontend deps into backend build
+frontend
+**/node_modules
+**/.next
+**/dist
+**/build

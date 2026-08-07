@@ -1,0 +1,27 @@
+[run]
+source = app
+branch = True
+omit =
+    app/main.py
+    app/seed.py
+    app/db.py
+    app/decorators.py
+    app/browser_agent.py
+    app/kafka_client.py
+    app/execution_handler.py
+    app/agents/graph.py
+    app/api.py
+    */__pycache__/*
+    */tests/*
+
+[report]
+precision = 2
+show_missing = True
+skip_covered = False
+fail_under = 80
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise NotImplementedError
+    if TYPE_CHECKING:
+    if __name__ == .__main__.:
