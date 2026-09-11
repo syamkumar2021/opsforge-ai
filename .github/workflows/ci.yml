@@ -36,6 +36,7 @@ jobs:
       - name: Run unit tests
         env:
           SECRET_KEY: ci-secret-key
+          PYTHONPATH: ${{ github.workspace }}
         run: |
           pytest tests/unit -q --maxfail=3
 
