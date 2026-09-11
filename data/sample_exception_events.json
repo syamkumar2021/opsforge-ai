@@ -1,0 +1,223 @@
+{
+  "approve_payload": {
+    "decision": "approved",
+    "notes": "Vendor evidence verified. Proceed with ERP reconciliation."
+  },
+  "reject_payload": {
+    "decision": "rejected",
+    "notes": "Evidence insufficient. Keep ERP status unchanged."
+  },
+  "events": [
+    {
+      "id": 1,
+      "title": "Valid mismatch, high severity",
+      "order_number": "ORD-10001",
+      "payload": {
+        "order_number": "ORD-10001",
+        "exception_type": "vendor_status_mismatch",
+        "severity": "high",
+        "description": "ERP processing vs portal In Transit mismatch"
+      },
+      "expected_http": 200,
+      "expected_flow": "waiting_human → approve/reject → completed",
+      "hitl": true,
+      "notes": "Primary demo case. Portal typically In Transit vs ERP processing."
+    },
+    {
+      "id": 2,
+      "title": "Shipping delay, medium",
+      "order_number": "ORD-10002",
+      "payload": {
+        "order_number": "ORD-10002",
+        "exception_type": "shipping_delay",
+        "severity": "medium",
+        "description": "Shipment delayed beyond SLA window"
+      },
+      "expected_http": 200,
+      "expected_flow": "investigation runs; HITL depends on decision rules and confidence",
+      "hitl": "depends",
+      "notes": "Report should mention shipping_delay context."
+    },
+    {
+      "id": 3,
+      "title": "Delivered-style portal, low severity",
+      "order_number": "ORD-10003",
+      "payload": {
+        "order_number": "ORD-10003",
+        "exception_type": "vendor_status_mismatch",
+        "severity": "low",
+        "description": "Portal may show Delivered while ERP is shipped"
+      },
+      "expected_http": 200,
+      "expected_flow": "often completed without HITL",
+      "hitl": false,
+      "notes": "Order ending 3 → portal Delivered. Low severity can auto-complete."
+    },
+    {
+      "id": 4,
+      "title": "Address issue, high",
+      "order_number": "ORD-10004",
+      "payload": {
+        "order_number": "ORD-10004",
+        "exception_type": "address_issue",
+        "severity": "high",
+        "description": "Carrier reported address exception"
+      },
+      "expected_http": 200,
+      "expected_flow": "waiting_human",
+      "hitl": true,
+      "notes": "Order ending 4 → address-style portal exception."
+    },
+    {
+      "id": 5,
+      "title": "Inventory shortage, critical",
+      "order_number": "ORD-10005",
+      "payload": {
+        "order_number": "ORD-10005",
+        "exception_type": "inventory_shortage",
+        "severity": "critical",
+        "description": "Warehouse shortage after order confirmation"
+      },
+      "expected_http": 200,
+      "expected_flow": "waiting_human",
+      "hitl": true,
+      "notes": "Critical severity almost always requires human approval."
+    },
+    {
+      "id": 6,
+      "title": "Mismatch without extra exception row",
+      "order_number": "ORD-10006",
+      "payload": {
+        "order_number": "ORD-10006",
+        "exception_type": "vendor_status_mismatch",
+        "severity": "medium",
+        "description": "Mismatch check for order without pre-seeded exception row"
+      },
+      "expected_http": 200,
+      "expected_flow": "order found; investigation continues",
+      "hitl": "depends",
+      "notes": "ERP order exists. Portal default is often Label Created."
+    },
+    {
+      "id": 7,
+      "title": "Payment failure, medium",
+      "order_number": "ORD-10010",
+      "payload": {
+        "order_number": "ORD-10010",
+        "exception_type": "payment_failure",
+        "severity": "medium",
+        "description": "Secondary payment verification failed"
+      },
+      "expected_http": 200,
+      "expected_flow": "investigation runs; report includes payment_failure",
+      "hitl": "depends",
+      "notes": "Use after ERP feed includes ORD-10010."
+    },
+    {
+      "id": 8,
+      "title": "Duplicate active case",
+      "order_number": "ORD-10001",
+      "payload": {
+        "order_number": "ORD-10001",
+        "exception_type": "vendor_status_mismatch",
+        "severity": "high",
+        "description": "ERP processing vs portal In Transit mismatch"
+      },
+      "expected_http": 409,
+      "expected_flow": "rejected as duplicate while ORD-10001 is still pending/running/waiting_human",
+      "hitl": false,
+      "notes": "Run only while case #1 is still active."
+    },
+    {
+      "id": 9,
+      "title": "Unknown order number",
+      "order_number": "ORD-99999",
+      "payload": {
+        "order_number": "ORD-99999",
+        "exception_type": "vendor_status_mismatch",
+        "severity": "medium",
+        "description": "Order does not exist in ERP feed data"
+      },
+      "expected_http": 200,
+      "expected_flow": "accepted; research shows order not found; no crash",
+      "hitl": true,
+      "notes": "Cannot safely update ERP; policy usually asks a human."
+    },
+    {
+      "id": 10,
+      "title": "Invalid exception_type",
+      "payload": {
+        "order_number": "ORD-10001",
+        "exception_type": "random_issue",
+        "severity": "high",
+        "description": "Should fail schema validation for exception_type"
+      },
+      "expected_http": 422,
+      "expected_flow": "validation error; no Kafka; no agents",
+      "hitl": false
+    },
+    {
+      "id": 11,
+      "title": "Invalid severity",
+      "payload": {
+        "order_number": "ORD-10001",
+        "exception_type": "vendor_status_mismatch",
+        "severity": "urgent",
+        "description": "Should fail schema validation for severity"
+      },
+      "expected_http": 422,
+      "expected_flow": "validation error; no Kafka; no agents",
+      "hitl": false
+    },
+    {
+      "id": 12,
+      "title": "Missing required fields",
+      "payload": {
+        "severity": "high"
+      },
+      "expected_http": 422,
+      "expected_flow": "validation error",
+      "hitl": false
+    },
+    {
+      "id": 13,
+      "title": "Empty order_number",
+      "payload": {
+        "order_number": "",
+        "exception_type": "vendor_status_mismatch",
+        "severity": "high",
+        "description": "Empty order number should be rejected"
+      },
+      "expected_http": 422,
+      "expected_flow": "validation error",
+      "hitl": false
+    },
+    {
+      "id": 14,
+      "title": "Empty description",
+      "payload": {
+        "order_number": "ORD-10001",
+        "exception_type": "vendor_status_mismatch",
+        "severity": "high",
+        "description": ""
+      },
+      "expected_http": 422,
+      "expected_flow": "validation error when min-length is enabled",
+      "hitl": false
+    },
+    {
+      "id": 15,
+      "title": "Unauthorized (no token)",
+      "payload": {
+        "order_number": "ORD-10001",
+        "exception_type": "vendor_status_mismatch",
+        "severity": "high",
+        "description": "ERP processing vs portal In Transit mismatch"
+      },
+      "expected_http": 401,
+      "expected_flow": "rejected before processing",
+      "hitl": false,
+      "notes": "Call POST /api/v1/events/simulate without Authorization header."
+    }
+  ]
+}

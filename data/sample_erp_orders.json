@@ -1,0 +1,196 @@
+{
+  "orders": [
+    {
+      "order_number": "ORD-10001",
+      "customer_id": "CUST-2048",
+      "customer_email": "alice.johnson@email.com",
+      "status": "processing",
+      "total_amount": 189.50,
+      "currency": "USD",
+      "vendor_id": "VENDOR-17",
+      "tracking_number": null,
+      "shipping_address": {
+        "street": "742 Evergreen Terrace",
+        "city": "Springfield",
+        "state": "IL",
+        "zip": "62704",
+        "country": "US"
+      },
+      "items": [
+        { "sku": "SKU-8811", "name": "Noise Cancelling Headphones", "qty": 1, "price": 149.5 },
+        { "sku": "SKU-2203", "name": "USB-C Cable 2m", "qty": 2, "price": 20 }
+      ]
+    },
+    {
+      "order_number": "ORD-10002",
+      "customer_id": "CUST-3001",
+      "customer_email": "brian.lee@email.com",
+      "status": "processing",
+      "total_amount": 79.99,
+      "currency": "USD",
+      "vendor_id": "VENDOR-09",
+      "shipping_address": {
+        "street": "10 Market St",
+        "city": "Austin",
+        "state": "TX",
+        "zip": "78701",
+        "country": "US"
+      },
+      "items": [
+        { "sku": "SKU-1100", "name": "Wireless Mouse", "qty": 1, "price": 79.99 }
+      ]
+    },
+    {
+      "order_number": "ORD-10003",
+      "customer_id": "CUST-3002",
+      "customer_email": "carol.nguyen@email.com",
+      "status": "shipped",
+      "total_amount": 120.00,
+      "currency": "USD",
+      "vendor_id": "VENDOR-11",
+      "shipping_address": {
+        "street": "88 Pine Ave",
+        "city": "Seattle",
+        "state": "WA",
+        "zip": "98101",
+        "country": "US"
+      },
+      "items": [
+        { "sku": "SKU-2201", "name": "USB Hub", "qty": 2, "price": 60 }
+      ]
+    },
+    {
+      "order_number": "ORD-10004",
+      "customer_id": "CUST-3003",
+      "customer_email": "dev.patel@email.com",
+      "status": "processing",
+      "total_amount": 45.00,
+      "currency": "USD",
+      "vendor_id": "VENDOR-03",
+      "shipping_address": {
+        "street": "5 Oak Road",
+        "city": "Denver",
+        "state": "CO",
+        "zip": "80202",
+        "country": "US"
+      },
+      "items": [
+        { "sku": "SKU-500", "name": "Phone Case", "qty": 3, "price": 15 }
+      ]
+    },
+    {
+      "order_number": "ORD-10005",
+      "customer_id": "CUST-3004",
+      "customer_email": "emma.wright@email.com",
+      "status": "confirmed",
+      "total_amount": 250.00,
+      "currency": "USD",
+      "vendor_id": "VENDOR-21",
+      "shipping_address": {
+        "street": "19 Lake View",
+        "city": "Chicago",
+        "state": "IL",
+        "zip": "60601",
+        "country": "US"
+      },
+      "items": [
+        { "sku": "SKU-900", "name": "Keyboard", "qty": 1, "price": 250 }
+      ]
+    },
+    {
+      "order_number": "ORD-10006",
+      "customer_id": "CUST-3005",
+      "customer_email": "frank.kim@email.com",
+      "status": "processing",
+      "total_amount": 99.00,
+      "currency": "USD",
+      "vendor_id": "VENDOR-17",
+      "shipping_address": {
+        "street": "2 Center Blvd",
+        "city": "Miami",
+        "state": "FL",
+        "zip": "33101",
+        "country": "US"
+      },
+      "items": [
+        { "sku": "SKU-330", "name": "Webcam", "qty": 1, "price": 99 }
+      ]
+    },
+    {
+      "order_number": "ORD-10007",
+      "customer_id": "CUST-3006",
+      "customer_email": "grace.chen@email.com",
+      "status": "processing",
+      "total_amount": 60.00,
+      "currency": "USD",
+      "vendor_id": "VENDOR-08",
+      "shipping_address": {
+        "street": "77 River Rd",
+        "city": "Boston",
+        "state": "MA",
+        "zip": "02108",
+        "country": "US"
+      },
+      "items": [
+        { "sku": "SKU-770", "name": "Charger", "qty": 2, "price": 30 }
+      ]
+    },
+    {
+      "order_number": "ORD-10008",
+      "customer_id": "CUST-3007",
+      "customer_email": "hiro.tanaka@email.com",
+      "status": "shipped",
+      "total_amount": 15.00,
+      "currency": "USD",
+      "vendor_id": "VENDOR-01",
+      "shipping_address": {
+        "street": "9 Cherry Lane",
+        "city": "San Jose",
+        "state": "CA",
+        "zip": "95112",
+        "country": "US"
+      },
+      "items": [
+        { "sku": "SKU-010", "name": "Cable Clip Pack", "qty": 1, "price": 15 }
+      ]
+    },
+    {
+      "order_number": "ORD-10009",
+      "customer_id": "CUST-3008",
+      "customer_email": "ivy.morgan@email.com",
+      "status": "delivered",
+      "total_amount": 300.00,
+      "currency": "USD",
+      "vendor_id": "VENDOR-19",
+      "shipping_address": {
+        "street": "45 Hill St",
+        "city": "Portland",
+        "state": "OR",
+        "zip": "97201",
+        "country": "US"
+      },
+      "items": [
+        { "sku": "SKU-450", "name": "Monitor Stand", "qty": 1, "price": 300 }
+      ]
+    },
+    {
+      "order_number": "ORD-10010",
+      "customer_id": "CUST-3009",
+      "customer_email": "jake.ross@email.com",
+      "status": "processing",
+      "total_amount": 40.00,
+      "currency": "USD",
+      "vendor_id": "VENDOR-12",
+      "shipping_address": {
+        "street": "12 Bay Street",
+        "city": "Tampa",
+        "state": "FL",
+        "zip": "33602",
+        "country": "US"
+      },
+      "items": [
+        { "sku": "SKU-040", "name": "Laptop Sleeve", "qty": 1, "price": 40 }
+      ]
+    }
+  ]
+}
