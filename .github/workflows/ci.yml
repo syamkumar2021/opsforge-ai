@@ -35,8 +35,12 @@ jobs:
 
       - name: Run unit tests
         env:
-          SECRET_KEY: ci-secret-key
           PYTHONPATH: ${{ github.workspace }}
+          SECRET_KEY: ci-secret-key
+          DATABASE_URL: postgresql+asyncpg://opsforge:opsforge_secret@localhost:5432/opsforge
+          OPENAI_API_KEY: sk-ci-dummy-key
+          OPENAI_MODEL: meta-llama/llama-3.3-70b-instruct
+          OPENAI_BASE_URL: https://openrouter.ai/api/v1
         run: |
           pytest tests/unit -q --maxfail=3
 
